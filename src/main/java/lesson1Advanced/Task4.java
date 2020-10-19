@@ -17,6 +17,13 @@ public class Task4 {
     }
 
     public static String minVersion(String v1, String v2) {
-        return v1;
+        String result = "";
+        for (int i = 0; i < v1.length(); i++) {
+            if (v1.toCharArray()[i] < v2.toCharArray()[i])
+                result = v1;
+            else if(v1.toCharArray()[i] > v2.toCharArray()[i])
+                result = v2;
+        }
+        return result;
     }
 }

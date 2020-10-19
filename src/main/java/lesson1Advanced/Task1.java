@@ -10,6 +10,11 @@ public class Task1 {
     }
 
     public static int min(int[] a) {
-        return 0;
+        int result = a[0];
+        for (int i = 0; i < a.length; i++) {
+            if(a[i] < result)
+                result = a[i];
+        }
+        return result;
     }
 }

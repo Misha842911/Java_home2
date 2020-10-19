@@ -19,6 +19,13 @@ public class Task2 {
 
     public static void main(String[] args) {
         String s = "*";
-        System.out.println(s);
+        int line = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < line; j++) {
+                System.out.print(s);
+            }
+            line++;
+            System.out.println(s);
+        }
     }
 }

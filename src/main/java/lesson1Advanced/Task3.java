@@ -20,6 +20,15 @@ public class Task3 {
 
     public static void main(String[] args) {
         String s = "*";
-        System.out.println(s);
+        String empty = "          ";
+        int line = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < line; j++) {
+                System.out.print(empty + s);
+            }
+            line++;
+            System.out.println(empty + s);
+            empty = empty.replace(" ", "*");
+        }
     }
 }
