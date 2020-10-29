@@ -11,11 +11,9 @@ public class Task5Test {
     @Parameters({"reversedStr","str"})
     @Test
     public void checkReverse(String reversedStr, String str){
-        reversedStr = Task5.reverse(str);
-        System.out.println(reversedStr);
+        String actualStr = Task5.reverse(str);
 //        String expectedStr = "!!!gnirts elpmaxE";
 //        String actualStr = Task5.reverse(Task5.getStr());
-        String reversedAgainStr = Task5.reverse(reversedStr);
-        assertEquals(str, reversedAgainStr);
+        assertEquals(actualStr, reversedStr);
     }
 }
