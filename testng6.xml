@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="First suit">
+    <parameter name="reversedStr" value="ABCDE"/>
+    <parameter name="str" value="EDCBA"/>
+    <test name="FirstTest">
+        <classes>
+            <class name="test.java.tests.Task5Test"/>
+        </classes>
+    </test>
+</suite>

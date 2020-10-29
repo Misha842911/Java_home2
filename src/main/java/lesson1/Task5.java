@@ -5,16 +5,20 @@ package main.java.lesson1;
  * например "Hello world!!!" -> "!!!dlrow olleH"
  */
 public class Task5 {
+    static String str = "Example string!!!";
     public static void main(String[] args) {
-        System.out.println(reverse("Hello world!!!"));
+        System.out.println(reverse(str));
+    }
+    public static String getStr() {
+        return str;
     }
 
     public static String reverse(String str) {
 
-        String result = "";
+        String reversedstr = "";
         for (int i = str.length() - 1; i >= 0; i--) {
-            result += str.charAt(i);
+            reversedstr += str.charAt(i);
         }
-        return result;
+        return reversedstr;
     }
 }
