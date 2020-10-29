@@ -25,13 +25,14 @@ public class Task2Test {
             if(namesArr.length == 10) {
                 System.out.println("Names in line amount: " + namesArr.length);
                 actualNumberNamesInString = namesArr.length;
+                assertEquals(actualNumberNamesInString, expectedNumberNamesInString);
             } else {
                 System.out.println("Number of Names in the string is not correct");
             }
 
         }
         assertEquals(actualNumberStrings, expectedNumberStrings);
-        assertEquals(actualNumberNamesInString, expectedNumberNamesInString);
+
 
     }
 }
