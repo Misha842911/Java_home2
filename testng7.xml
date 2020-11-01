@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Amazon">
+    <test name="Amazon Price">
+        <classes>
+            <class name="test.java.tests.HWLesson7.AmazonPriceTest">
+                <methods>
+                    <include name="main"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

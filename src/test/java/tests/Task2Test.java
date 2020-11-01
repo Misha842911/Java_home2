@@ -22,11 +22,11 @@ public class Task2Test {
         int actualNumberNamesInString = 0;
         for (String el: strArr) {
             String namesArr[] = el.split(" ");
-            if(namesArr.length == 10) {
+            try{
                 System.out.println("Names in line amount: " + namesArr.length);
                 actualNumberNamesInString = namesArr.length;
                 assertEquals(actualNumberNamesInString, expectedNumberNamesInString);
-            } else {
+            } catch (Exception e) {
                 System.out.println("Number of Names in the string is not correct");
             }
 
