@@ -12,8 +12,6 @@ public class AmazonRegistrationTest {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("window-size=1000,1000");
-//        chromeOptions.addArguments("start-maximized");
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
 
