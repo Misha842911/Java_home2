@@ -5,48 +5,117 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+
 public class AmazonRegistrationTest {
-    @Test
-    public static void main(String[] args) throws InterruptedException {
+    WebDriver driver;
+    By CreateAccountFirstBtnBy = By.xpath("//a[@id='createAccountSubmit']");
+    By YourNameBy = By.xpath("//input[@id='ap_customer_name']");
+    By EmailBy = By.xpath("//input[@id='ap_email']");
+    By PasswordBy = By.xpath("//input[@id='ap_password']");
+    By ReEnterPassowrdBy = By.xpath("//input[@id='ap_password_check']");
+    By CreateAccountSecondBtnBy = By.xpath("//input[@id='continue']");
+    By HelloSignInBy = By.xpath("//a[@id='nav-link-accountList']");
+
+    @BeforeMethod
+    public void initializeBrowser(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
+    }
+//
+//    @Test
+//    public void createAccountWithEmtyFieldsCheck() throws InterruptedException {
+//        driver.get("https://www.amazon.com/");
+//        Thread.sleep(5000);
+//
+//        WebElement HelloSignIn = driver.findElement(HelloSignInBy);
+//        HelloSignIn.click();
+//        Thread.sleep(5000);
+//
+//        WebElement CreateAccountFirstBtn = driver.findElement(CreateAccountFirstBtnBy);
+//        CreateAccountFirstBtn.click();
+//        Thread.sleep(5000);
+//
+//        WebElement CreateAccountSecondBtn = driver.findElement(CreateAccountSecondBtnBy);
+//        CreateAccountSecondBtn.click();
+//        Thread.sleep(5000);
+//
+//        WebElement YourNameField = driver.findElement(YourNameBy);
+//        WebElement EmailField = driver.findElement(EmailBy);
+//        WebElement PasswordField = driver.findElement(PasswordBy);
+//
+//        String expectedNameFieldColor = "rgb(221, 0, 0)";
+//        String expectedEmailFieldColor = "rgb(221, 0, 0)";
+//        String expectedPasswordFieldColor = "rgb(221, 0, 0)";
+//
+//        String actualNameFieldColor = driver.findElement(YourNameBy).getCssValue("border-color");
+//        String actualEmailFieldColor = driver.findElement(EmailBy).getCssValue("border-color");
+//        String actualPasswordFieldColor = driver.findElement(PasswordBy).getCssValue("border-color");
+//
+//        assertEquals(actualNameFieldColor, expectedNameFieldColor);
+//        assertEquals(actualEmailFieldColor, expectedEmailFieldColor);
+//        assertEquals(actualPasswordFieldColor, expectedPasswordFieldColor);
 
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(HelloSignIn);
+//    }
+
+    @Test
+    public void createAccountWithFilledNameEmailPasswordCheck() throws InterruptedException {
         driver.get("https://www.amazon.com/");
         Thread.sleep(5000);
 
-        By bytodaysDeal = By.xpath("//a[@href='/international-sales-offers/b/?ie=UTF8&node=15529609011&ref_=nav_cs_gb_intl']");
-        WebElement todaysDealsBtn = driver.findElement(bytodaysDeal);
-        todaysDealsBtn.click();
+        WebElement HelloSignIn = driver.findElement(HelloSignInBy);
+        HelloSignIn.click();
         Thread.sleep(5000);
 
-        By byFirstElement = By.xpath("((//a[@id='dealTitle'])[1]/span)[1]");
-        WebElement FirstElement = driver.findElement(byFirstElement);
-        FirstElement.click();
-
-        By byitemName = By.xpath("(//span[@class='a-size-base a-color-base'])[1]");
-        WebElement itemname = driver.findElement(byitemName);
-        String itemNameString = itemname.getText();
-        System.out.println("THE ITEM NAME IS: " + itemNameString);
-
-        By byOldprice = By.xpath("(//span[@class='a-size-mini a-color-tertiary octopus-widget-strike-through-price a-text-strike'])[1]");
-        WebElement oldPrice = driver.findElement(byOldprice);
-        String oldPriceString = oldPrice.getText();
-        System.out.println("The old price is: " + oldPriceString.substring(1));
-
-        By byNewPriceFirst = By.xpath("(//span[@class='a-price-whole'])[1]");
-        WebElement NewPriceFirst = driver.findElement(byNewPriceFirst);
-        String NewPriceFirstString = NewPriceFirst.getText();
-
-        By byNewPriceSecond = By.xpath("(//span[@class='a-price-fraction'])[1]");
-        WebElement NewPriceSecond = driver.findElement(byNewPriceSecond);
-        String NewPriceSecondString = NewPriceSecond.getText();
-
-        System.out.println("The new price is: " + NewPriceFirstString + "." + NewPriceSecondString);
+        WebElement CreateAccountFirstBtn = driver.findElement(CreateAccountFirstBtnBy);
+        CreateAccountFirstBtn.click();
         Thread.sleep(5000);
-        driver.close();
+
+        WebElement YourNameField = driver.findElement(YourNameBy);
+        YourNameField.sendKeys("UserName");
+        WebElement EmailField = driver.findElement(EmailBy);
+        EmailField.sendKeys("example@gmail.com");
+        WebElement PasswordField = driver.findElement(PasswordBy);
+        PasswordField.sendKeys("qwerty");
+
+        WebElement CreateAccountSecondBtn = driver.findElement(CreateAccountSecondBtnBy);
+        CreateAccountSecondBtn.click();
+        Thread.sleep(5000);
+
+        String expectedNameFieldColor = "rgb(221, 0, 0)";
+        String expectedEmailFieldColor = "rgb(221, 0, 0)";
+        String expectedPasswordFieldColor = "rgb(221, 0, 0)";
+        String expectedReEnterPassowrdField = "rgb(221, 0, 0)";
+
+        WebElement ReEnterPassowrdField = driver.findElement(ReEnterPassowrdBy);
+
+        String actualNameFieldColor = driver.findElement(YourNameBy).getCssValue("border-color");
+        String actualEmailFieldColor = driver.findElement(EmailBy).getCssValue("border-color");
+        String actualPasswordFieldColor = driver.findElement(PasswordBy).getCssValue("border-color");
+        String actualReEnterPassowrdField = driver.findElement(PasswordBy).getCssValue("border-color");
+
+        assertNotEquals(actualNameFieldColor, expectedNameFieldColor);
+        assertNotEquals(actualEmailFieldColor, expectedEmailFieldColor);
+        assertNotEquals(actualPasswordFieldColor, expectedPasswordFieldColor);
+        assertEquals(actualReEnterPassowrdField, expectedReEnterPassowrdField);
+
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(HelloSignIn);
     }
+
+//    @AfterMethod
+//    public void finalizeBrowser(){
+//        driver.quit();
+//    }
+
 }
