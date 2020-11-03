@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class AmazonPriceTest {
     @Test
-    public static void main(String[] args) throws InterruptedException {
+    public static void priceCheck() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("window-size=1000,1000");

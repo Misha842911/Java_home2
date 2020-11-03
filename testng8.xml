@@ -2,7 +2,7 @@
 <suite name="Amazon">
     <test name="Amazon Price">
         <classes>
-            <class name="test.java.tests.HWLesson7.AmazonPriceTest"/>
+            <class name="test.java.tests.HWLesson8.AmazonRegistrationTest"/>
         </classes>
     </test>
 </suite>
