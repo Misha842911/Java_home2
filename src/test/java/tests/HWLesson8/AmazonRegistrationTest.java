@@ -36,21 +36,21 @@ public class AmazonRegistrationTest {
     @Test
     public void createAccountWithEmtyFieldsCheck() throws InterruptedException {
         driver.get("https://www.amazon.com/");
-        Thread.sleep(5000);
 
         WebElement HelloSignIn = driver.findElement(HelloSignInBy);
         HelloSignIn.click();
-        Thread.sleep(5000);
 
-        WebElement CreateAccountFirstBtn = driver.findElement(CreateAccountFirstBtnBy);
+        WebElement CreateAccountFirstBtn = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(CreateAccountFirstBtnBy));
         CreateAccountFirstBtn.click();
-        Thread.sleep(5000);
 
-        WebElement CreateAccountSecondBtn = driver.findElement(CreateAccountSecondBtnBy);
+        WebElement CreateAccountSecondBtn = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(CreateAccountSecondBtnBy));
         CreateAccountSecondBtn.click();
         Thread.sleep(5000);
 
-        WebElement YourNameField = driver.findElement(YourNameBy);
+        WebElement YourNameField = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(YourNameBy));
         WebElement EmailField = driver.findElement(EmailBy);
         WebElement PasswordField = driver.findElement(PasswordBy);
 
