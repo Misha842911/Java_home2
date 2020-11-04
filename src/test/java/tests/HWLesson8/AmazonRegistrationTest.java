@@ -92,11 +92,12 @@ public class AmazonRegistrationTest {
         WebElement CreateAccountSecondBtn = driver.findElement(CreateAccountSecondBtnBy);
         CreateAccountSecondBtn.click();
 
-        WebElement YourNameField = (new WebDriverWait(driver, 10))
+        WebElement YourNameField = (new WebDriverWait(driver, 10, 500))
                 .until(ExpectedConditions.presenceOfElementLocated(YourNameBy));
         WebElement EmailField = driver.findElement(EmailBy);
         WebElement PasswordField = driver.findElement(PasswordBy);
-        WebElement ReEnterPassowrdField = driver.findElement(ReEnterPassowrdBy);
+        WebElement ReEnterPassowrdField = (new WebDriverWait(driver, 10,500))
+                .until(ExpectedConditions.presenceOfElementLocated(ReEnterPassowrdBy));
 
         String expectedNameFieldColor = "rgb(221, 0, 0)";
         String expectedEmailFieldColor = "rgb(221, 0, 0)";
