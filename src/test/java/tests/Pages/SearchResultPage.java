@@ -14,9 +14,10 @@ public class SearchResultPage {
         this.driver = driver;
         wait = new WebDriverWait(driver, 10, 500);
     };
-    public SearchResultPage clickCheckBox(By GoodsListBy, By AppleCheckBoxBy){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(AppleCheckBoxBy));
-        driver.findElement(AppleCheckBoxBy).click();
+
+    public SearchResultPage clickCheckBox(By CheckBox, By GoodsListBy){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CheckBox));
+        driver.findElement(CheckBox).click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(GoodsListBy));
         return this;
     }

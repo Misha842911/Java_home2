@@ -15,18 +15,6 @@ import static org.testng.Assert.assertEquals;
 public class TestBaseSetUp {
     public WebDriver driver;
 
-    By AppleCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]");
-    By SamsungCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[2]");
-
-
-//    @DataProvider(name = "dp")
-//    public Object[][] dataprovider(){
-//        return new Object[][]{
-//                {"iPhone\n", "iphone", AppleCheckBoxBy},
-//                {"Samsung\n", "samsung", SamsungCheckBoxBy}
-//        };
-//    }
-
     @BeforeMethod
     public void initializeBrowser(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");

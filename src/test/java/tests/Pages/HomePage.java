@@ -24,14 +24,14 @@ public class HomePage {
     }
 
     public HomePage clickSearchField(){
-        wait.until(d -> d.findElement(SearchFieldBy)).click();
+        driver.findElement(SearchFieldBy).click();
         return this;
     }
 
-    public HomePage enterTextInSearchField(String textForSearch){
+    public HomePage enterTextInSearchField(String textToSearch){
         WebElement SearchField = driver.findElement(SearchFieldBy);
         SearchField.click();
-        SearchField.sendKeys(textForSearch);
+        SearchField.sendKeys(textToSearch);
         return this;
     }
 }
