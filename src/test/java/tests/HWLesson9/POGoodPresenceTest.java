@@ -2,9 +2,9 @@ package test.java.tests.HWLesson9;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import test.java.tests.Pages.HomePage;
+import test.java.tests.Pages.SearchResultPage;
 import test.java.tests.TestBaseSetUp;
 import java.util.List;
 
@@ -12,26 +12,29 @@ import static org.testng.Assert.assertEquals;
 
 
 public class POGoodPresenceTest extends TestBaseSetUp {
-    By SearchFieldBy = By.xpath("//input[@id='twotabsearchtextbox']");
+    HomePage homePage;
+    SearchResultPage searchResultPage;
+    String searchText = "iPhone\n";
+    By AppleCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]");
     By GoodsListBy = By.xpath("//div[@class='a-section a-spacing-medium']");
 
+    @BeforeClass
+    public void pageinitialize(){
+        homePage = new HomePage(driver);
+        searchResultPage = new SearchResultPage(driver);
+    }
 
-    @Test(dataProvider = "dp")
-    public void goodPresenceTest(String InputGoodName, String ExpectedGoodName, By CheckBox) throws InterruptedException {
-        driver.get("https://www.amazon.com/");
-        WebElement SearchField = driver.findElement(SearchFieldBy);
-        SearchField.click();
-        SearchField.sendKeys(InputGoodName);
+//    @Test(dataProvider = "dp")
+//String InputGoodName, String ExpectedGoodName, By CheckBox
+    public void goodPresenceTest() {
+        homePage.open();
+        homePage.enterTextInSearchField(searchText);
 
-        WebElement GoodsList = (new WebDriverWait(driver, 10,500))
-                .until(ExpectedConditions.presenceOfElementLocated(GoodsListBy));
-        WebElement ItemCheckBox = driver.findElement(CheckBox);
-        ItemCheckBox.click();
+        searchResultPage.clickCheckBox(GoodsListBy, AppleCheckBoxBy);
 
         List<WebElement> allGoods = driver.findElements(GoodsListBy);
-
         for (WebElement good: allGoods) {
-            assertEquals ((good.getText().contains(ExpectedGoodName.toLowerCase())), true);
+            assertEquals ((good.getText().contains("iPhone")), true);
         }
     }
 }

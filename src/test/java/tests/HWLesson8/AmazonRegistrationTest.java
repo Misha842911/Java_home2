@@ -72,7 +72,7 @@ public class AmazonRegistrationTest {
 
     @Test
     public void createAccountWithFilledNameEmailPasswordCheck() throws InterruptedException {
-        driver.get("https://www.amazon.com/");
+
 
         WebElement HelloSignIn = driver.findElement(HelloSignInBy);
         HelloSignIn.click();

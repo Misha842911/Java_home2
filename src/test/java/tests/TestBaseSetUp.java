@@ -10,22 +10,22 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEquals;
+
 
 public class TestBaseSetUp {
     public WebDriver driver;
-    WebDriverWait wait;
+
     By AppleCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]");
     By SamsungCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[2]");
 
 
-    @DataProvider(name = "dp")
-    public Object[][] dataprovider(){
-        return new Object[][]{
-                {"iPhone\n", "iphone", AppleCheckBoxBy},
-                {"Samsung\n", "samsung", SamsungCheckBoxBy}
-        };
-    }
+//    @DataProvider(name = "dp")
+//    public Object[][] dataprovider(){
+//        return new Object[][]{
+//                {"iPhone\n", "iphone", AppleCheckBoxBy},
+//                {"Samsung\n", "samsung", SamsungCheckBoxBy}
+//        };
+//    }
 
     @BeforeMethod
     public void initializeBrowser(){
