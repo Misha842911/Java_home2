@@ -2,7 +2,6 @@ package test.java.tests.HWLesson9;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,7 +10,7 @@ import test.java.tests.Pages.SearchResultPage;
 import test.java.tests.TestBaseSetUp;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class POGoodPresenceTest extends TestBaseSetUp {
@@ -20,7 +19,8 @@ public class POGoodPresenceTest extends TestBaseSetUp {
 
     By AppleCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[1]");
     By SamsungCheckBoxBy = By.xpath("(//i[@class='a-icon a-icon-checkbox'])[2]");
-    By GoodsListBy = By.xpath("//div[@class='a-section a-spacing-medium']");
+    By goodsListBy = By.xpath("//div[@class='a-section a-spacing-medium']");
+
 
     @DataProvider(name = "dp")
     public Object[][] dataprovider(){
@@ -37,16 +37,16 @@ public class POGoodPresenceTest extends TestBaseSetUp {
     }
 
     @Test(dataProvider = "dp")
-    public void goodPresenceTest(String InputGoodName, String ComparisonItemName, By CheckBox) {
+    public void POgoodPresenceTest(String inputGoodName, String comparisonItemName, By checkBox) {
 
         homePage.open();
-        homePage.enterTextInSearchField(InputGoodName);
+        homePage.enterTextInSearchField(inputGoodName);
 
-        searchResultPage.clickCheckBox(CheckBox, GoodsListBy);
+        searchResultPage.clickCheckBox(checkBox);
 
-        List<WebElement> allGoods = driver.findElements(GoodsListBy);
+        List<WebElement> allGoods = driver.findElements(goodsListBy);
         for (WebElement good: allGoods) {
-            assertEquals ((good.getText().toLowerCase().contains(ComparisonItemName)), true);
+            assertTrue ((good.getText().toLowerCase().contains(comparisonItemName)));
         }
     }
 }
