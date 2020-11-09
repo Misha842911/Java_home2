@@ -1,19 +1,21 @@
-package test.java.tests.HWLesson10;
+package test.java.tests.TestClass;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.tests.Pages.HomePage;
 import test.java.tests.Pages.SearchResultPage;
 import test.java.tests.TestBaseSetUp;
+
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-public class LaptopTest extends TestBaseSetUp {
+public class TestClass extends TestBaseSetUp {
     HomePage homePage;
     SearchResultPage searchResultPage;
 
@@ -60,19 +62,24 @@ public class LaptopTest extends TestBaseSetUp {
         homePage.enterTextInSearchField(inputItemName);
 
         searchResultPage.clickSeeMore();
-        searchResultPage.clickCheckBox(checkBox);
-        List<WebElement> allItems = driver.findElements(itemListBy);
-        for (WebElement good : allItems) {
-            String actualItemName = "";
-            String itemText = (good.getText().replace("_", " ").toLowerCase());
-            String[] itemTextArr = itemText.split(" ");
-            for (String itemWord : itemTextArr) {
-                if(itemWord.contains(comparisonItemName)){
-                    actualItemName = itemWord;
+        List<WebElement> allCheckboxes = driver.findElements(checkBoxBrandListBy);
+        for (WebElement brandCheckBox : allCheckboxes) {
+
+            searchResultPage.clickCheckBox(checkBox);
+            List<WebElement> allItems = driver.findElements(itemListBy);
+            for (WebElement good : allItems) {
+                String actualItemName = "";
+                String itemText = (good.getText().replace("_", " ").toLowerCase());
+                String[] itemTextArr = itemText.split(" ");
+                for (String itemWord : itemTextArr) {
+                    if(itemWord.contains(comparisonItemName)){
+                        actualItemName = itemWord;
+                    }
                 }
+                assertEquals(actualItemName, comparisonItemName);
             }
-            assertEquals(actualItemName, comparisonItemName);
-            }
-        searchResultPage.unClickCheckBox(checkBox);
+            searchResultPage.unClickCheckBox(checkBox);
+        }
+
     }
 }
