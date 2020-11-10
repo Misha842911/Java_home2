@@ -76,9 +76,7 @@ public class TestClass extends TestBaseSetUp {
         searchResultPage.clickSeeMore();
         List<WebElement> allCheckboxes = searchResultPage.getLaptopCheckBoxesBrandList();
         for (WebElement brandCheckBox : allCheckboxes) {
-            Thread.sleep(4000);
             brandCheckBox.click();
-            Thread.sleep(4000);
             List<WebElement> allItems = searchResultPage.getSearchResultItemText();
             for (WebElement good : allItems) {
                 String actualItemName = "";
@@ -92,7 +90,6 @@ public class TestClass extends TestBaseSetUp {
                 }
                 assertEquals(actualItemName, expectedItemName);
             }
-            Thread.sleep(4000);
             brandCheckBox.click();
         }
     }

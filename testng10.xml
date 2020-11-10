@@ -6,3 +6,4 @@
         </classes>
     </test>
 </suite>
+<!--        mvn clean -DsuiteXmlFile=testng10.xml-->
