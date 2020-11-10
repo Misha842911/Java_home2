@@ -61,18 +61,21 @@ public class LaptopTest extends TestBaseSetUp {
 
         searchResultPage.clickSeeMore();
         searchResultPage.clickCheckBox(checkBox);
-        List<WebElement> allItems = driver.findElements(itemListBy);
-        for (WebElement good : allItems) {
+
+        List<WebElement> allItems = searchResultPage.getSearchResultItemText();
+        for (WebElement item : allItems) {
             String actualItemName = "";
-            String itemText = (good.getText().replace("_", " ").toLowerCase());
+            String itemText = (item.getText().replace("_", " ").toLowerCase());
             String[] itemTextArr = itemText.split(" ");
             for (String itemWord : itemTextArr) {
                 if(itemWord.contains(comparisonItemName)){
                     actualItemName = itemWord;
                 }
             }
-            assertEquals(actualItemName, comparisonItemName);
+            assertEquals(actualItemName, comparisonItemName,
+                    String.format("Not all elements on Search result Page contain brand name - %s!!", comparisonItemName));
             }
-        searchResultPage.unClickCheckBox(checkBox);
+        searchResultPage.clickCheckBox(checkBox);
+
     }
 }

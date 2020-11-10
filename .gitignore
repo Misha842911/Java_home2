@@ -2,3 +2,5 @@
 target/
 aqa_java_tasks.
 chromedriver.exe
+logs/
+screenshot/

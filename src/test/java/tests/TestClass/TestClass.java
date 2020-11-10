@@ -37,16 +37,26 @@ public class TestClass extends TestBaseSetUp {
     @DataProvider(name = "dp")
     public Object[][] dataprovider(){
         return new Object[][]{
-                {"hp", hpCheckBoxBy},
-                {"acer", acerCheckBoxBy},
-                {"asus", asusCheckBoxBy},
-                {"lenovo", lenovoCheckBoxBy},
-                {"dell", dellCheckBoxBy},
-                {"microsoft", microsoftCheckBoxBy},
-                {"apple", appleCheckBoxBy},
-                {"chuwi", chuwiCheckBoxBy},
-                {"lg", lgCheckBoxBy},
-                {"jumper", jumperCheckBoxBy}
+//                {"hp", hpCheckBoxBy},
+//                {"acer", acerCheckBoxBy},
+//                {"asus", asusCheckBoxBy},
+//                {"lenovo", lenovoCheckBoxBy},
+//                {"dell", dellCheckBoxBy},
+//                {"microsoft", microsoftCheckBoxBy},
+//                {"apple", appleCheckBoxBy},
+//                {"chuwi", chuwiCheckBoxBy},
+//                {"lg", lgCheckBoxBy},
+//                {"jumper", jumperCheckBoxBy}
+                {"hp"},
+                {"acer"},
+                {"asus"},
+                {"lenovo"},
+                {"dell"},
+                {"microsoft"},
+                {"apple"},
+                {"chuwi"},
+                {"lg"},
+                {"jumper"}
         };
     }
 
@@ -56,30 +66,34 @@ public class TestClass extends TestBaseSetUp {
         searchResultPage = new SearchResultPage(driver);
     }
 
+
     @Test(dataProvider = "dp")
-    public void LaptopTest(String comparisonItemName, By checkBox) {
+//    public void LaptopTest(String expectedItemName, By checkBox) throws InterruptedException {
+    public void LaptopTest(String expectedItemName) throws InterruptedException {
         homePage.open();
         homePage.enterTextInSearchField(inputItemName);
 
         searchResultPage.clickSeeMore();
-        List<WebElement> allCheckboxes = driver.findElements(checkBoxBrandListBy);
+        List<WebElement> allCheckboxes = searchResultPage.getLaptopCheckBoxesBrandList();
         for (WebElement brandCheckBox : allCheckboxes) {
-
-            searchResultPage.clickCheckBox(checkBox);
-            List<WebElement> allItems = driver.findElements(itemListBy);
+            Thread.sleep(4000);
+            brandCheckBox.click();
+            Thread.sleep(4000);
+            List<WebElement> allItems = searchResultPage.getSearchResultItemText();
             for (WebElement good : allItems) {
                 String actualItemName = "";
                 String itemText = (good.getText().replace("_", " ").toLowerCase());
                 String[] itemTextArr = itemText.split(" ");
                 for (String itemWord : itemTextArr) {
-                    if(itemWord.contains(comparisonItemName)){
-                        actualItemName = itemWord;
+                    if(itemWord.contains(expectedItemName)){
+                            actualItemName = itemWord;
+                            break;
                     }
                 }
-                assertEquals(actualItemName, comparisonItemName);
+                assertEquals(actualItemName, expectedItemName);
             }
-            searchResultPage.unClickCheckBox(checkBox);
+            Thread.sleep(4000);
+            brandCheckBox.click();
         }
-
     }
 }
