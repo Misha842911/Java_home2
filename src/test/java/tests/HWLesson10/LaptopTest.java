@@ -64,18 +64,10 @@ public class LaptopTest extends TestBaseSetUp {
 
         List<WebElement> allItems = searchResultPage.getSearchResultItemText();
         for (WebElement item : allItems) {
-            String actualItemName = "";
-            String itemText = (item.getText().replace("_", " ").toLowerCase());
-            String[] itemTextArr = itemText.split(" ");
-            for (String itemWord : itemTextArr) {
-                if(itemWord.contains(comparisonItemName)){
-                    actualItemName = itemWord;
-                }
-            }
-            assertEquals(actualItemName, comparisonItemName,
-                    String.format("Not all elements on Search result Page contain brand name - %s!!", comparisonItemName));
-            }
-        searchResultPage.clickCheckBox(checkBox);
+            String actualItemName = item.getText().replace("_", " ").toLowerCase().contains(comparisonItemName) ?
+                    comparisonItemName : "Does not contain " + comparisonItemName;
 
+            assertEquals(actualItemName, comparisonItemName);
+        }
     }
 }

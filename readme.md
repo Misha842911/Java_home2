@@ -5,3 +5,5 @@ int actualMaximumPrice = Integer.parseInt(actualMaximumPriceAsString);
 asserTrue(actualMaximumPrice >= 200,
             String.format("Expected price %d to be more that 200", actualMaximumPrice)
             );
+            
+private final String delimiter = System.getProperty("os.name").toLowerCase().contains("windows") ? "\\" : "/";
