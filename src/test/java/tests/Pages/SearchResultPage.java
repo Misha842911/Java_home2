@@ -65,4 +65,23 @@ public class SearchResultPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(goodsListBy));
         return driver.findElements(itemListBy);
     }
+
+//    public SearchResultPage clickCheckBoxMultipleTimes(By laptopBrandsCheckBoxes ){
+//        logger.info("Click Laptop CheckBox");
+//        logger.error("ERROR!!!");
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(laptopBrandsCheckBoxes));
+//        List<WebElement> allCheckboxes = getLaptopCheckBoxesBrandList();
+//        for (WebElement brandCheckBox : allCheckboxes) {
+//            try {
+//                wait.until(ExpectedConditions.presenceOfElementLocated(brandCheckBox));
+//                brandCheckBox.click();
+//            } catch (Exception e) {
+//                System.out.println("can not click");
+//            }
+//        }
+//        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(goodsListBy));
+//
+//        return this;
+//    }
+
 }

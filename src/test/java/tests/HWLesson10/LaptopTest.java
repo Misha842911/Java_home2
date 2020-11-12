@@ -35,7 +35,7 @@ public class LaptopTest extends TestBaseSetUp {
     @DataProvider(name = "dp")
     public Object[][] dataprovider(){
         return new Object[][]{
-                {"hp", hpCheckBoxBy},
+                {"jbnmbn", hpCheckBoxBy},
                 {"acer", acerCheckBoxBy},
                 {"asus", asusCheckBoxBy},
                 {"lenovo", lenovoCheckBoxBy},
@@ -64,10 +64,7 @@ public class LaptopTest extends TestBaseSetUp {
 
         List<WebElement> allItems = searchResultPage.getSearchResultItemText();
         for (WebElement item : allItems) {
-            String actualItemName = item.getText().replace("_", " ").toLowerCase().contains(comparisonItemName) ?
-                    comparisonItemName : "Does not contain " + comparisonItemName;
-
-            assertEquals(actualItemName, comparisonItemName);
+            assertTrue(item.getText().replace("_", " ").toLowerCase().contains(comparisonItemName));
         }
     }
 }

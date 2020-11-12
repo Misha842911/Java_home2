@@ -70,7 +70,7 @@ public class AmazonRegistrationTest {
         actions.moveToElement(HelloSignIn);
     }
 
-    @Test
+    @Test()
     public void createAccountWithFilledNameEmailPasswordCheck() throws InterruptedException {
 
 
