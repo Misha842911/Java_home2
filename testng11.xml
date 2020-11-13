@@ -7,7 +7,7 @@
     <test name="FirstTest">
         <classes>
             <class name="test.java.tests.HWLesson9.POGoodPresenceTest"/>
-            <class name="test.java.tests.HWLesson9.POGoodPresenceTest2"/>
+<!--            <class name="test.java.tests.HWLesson9.POGoodPresenceTest2"/>-->
         </classes>
     </test>
 </suite>

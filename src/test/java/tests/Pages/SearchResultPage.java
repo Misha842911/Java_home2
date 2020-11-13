@@ -5,8 +5,11 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 import java.util.List;
 
@@ -20,15 +23,18 @@ public class SearchResultPage extends BasePage {
     By laptopBrandsCheckBoxes = By.xpath("(//ul[@class='a-unordered-list a-nostyle a-vertical a-spacing-medium'])[3]//*[@class='a-icon a-icon-checkbox']");
     By itemListBy = By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
 
+    @FindBy(xpath = "//div[@class='a-section a-spacing-medium']")
+    private List<WebElement> goodsList;
     public SearchResultPage(WebDriver driver){
         logger.trace("SEARCHRESULT PAGE was initialized");
         this.driver = driver;
         wait = new WebDriverWait(driver, 10, 500);
+        PageFactory.initElements(driver,this);
     };
 
     public SearchResultPage open(){
         logger.info("Open Search result page");
-        driver.get("https://www.amazon.com/s?k=laptop&ref=nb_sb_noss");
+        driver.get(PropertyLoader.loadProperty("url") + "s?k=laptop&ref=nb_sb_noss");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(goodsListBy));
         return this;
     }
@@ -63,7 +69,7 @@ public class SearchResultPage extends BasePage {
         logger.info("Get list of text for items");
         logger.warn("WARN!!!");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(goodsListBy));
-        return driver.findElements(itemListBy);
+        return goodsList;
     }
 
 //    public SearchResultPage clickCheckBoxMultipleTimes(By laptopBrandsCheckBoxes ){

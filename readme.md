@@ -1,5 +1,5 @@
 ### Tasks for java 
-mvn clean -DsuiteXmlFile=testng6.xml - use this command to launch testng6.xml file
+mvn clean -DsuiteXmlFile=testng6.xml test - use this command to launch testng6.xml file
 
 int actualMaximumPrice = Integer.parseInt(actualMaximumPriceAsString);
 asserTrue(actualMaximumPrice >= 200,

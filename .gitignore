@@ -4,3 +4,4 @@ aqa_java_tasks.
 chromedriver.exe
 logs/
 screenshot/
+src/test/resources/credential.properties
