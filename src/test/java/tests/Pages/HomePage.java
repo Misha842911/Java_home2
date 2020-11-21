@@ -1,5 +1,6 @@
 package test.java.tests.Pages;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -26,6 +27,7 @@ public class HomePage extends BasePage{
         PageFactory.initElements(driver,this);
     }
 
+    @Step("Home Page open")
     public HomePage open(){
         logger.info("Open HOME PAGE");
         driver.get(PropertyLoader.loadProperty("url"));
@@ -33,12 +35,14 @@ public class HomePage extends BasePage{
         return this;
     }
 
+    @Step("Click on Search field")
     public HomePage clickSearchField(){
         logger.info("Click 'Search field'");
         SearchField.click();
         return this;
     }
 
+    @Step("Enter text in Search field {textToSearch}")
     public HomePage enterTextInSearchField(String textToSearch){
         logger.info("Input text in the Search field and Press 'Enter'");
         SearchField.click();

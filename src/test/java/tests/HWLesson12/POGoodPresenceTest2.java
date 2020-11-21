@@ -1,4 +1,4 @@
-package test.java.tests.HWLesson9;
+package test.java.tests.HWLesson12;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,12 +8,13 @@ import org.testng.annotations.Test;
 import test.java.tests.Pages.HomePage;
 import test.java.tests.Pages.SearchResultPage;
 import test.java.tests.TestBaseSetUp;
+
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
 
-public class POGoodPresenceTest extends TestBaseSetUp {
+public class POGoodPresenceTest2 extends TestBaseSetUp {
     HomePage homePage;
     SearchResultPage searchResultPage;
 
@@ -25,8 +26,8 @@ public class POGoodPresenceTest extends TestBaseSetUp {
     @DataProvider(name = "dp")
     public Object[][] dataprovider(){
         return new Object[][]{
-                {"iPhone\n", "iphone", AppleCheckBoxBy},
-//                {"Samsung\n", "samsung", SamsungCheckBoxBy}
+//                {"iPhone\n", "iphone", AppleCheckBoxBy},
+                {"Samsung\n", "samsung", SamsungCheckBoxBy}
         };
     }
 
@@ -36,6 +37,7 @@ public class POGoodPresenceTest extends TestBaseSetUp {
         searchResultPage = new SearchResultPage(driver);
     }
 
+//    @Test(dataProvider = "dp", retryAnalyzer = RetryAnalyzer.class)
     @Test(dataProvider = "dp")
     public void POgoodPresenceTest(String inputGoodName, String comparisonItemName, By checkBox) {
 
@@ -49,6 +51,5 @@ public class POGoodPresenceTest extends TestBaseSetUp {
             assertTrue ((good.getText().toLowerCase().contains(comparisonItemName)));
         }
     }
-
 }
 

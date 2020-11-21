@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="First suit" parallel="classes" thread-count="10">
+<suite name="First suit" parallel="classes" thread-count="2">
     <listeners>
         <listener class-name="test.java.utils.Listener"/>
 <!--        <listener class-name="test.java.utils.AnnotationTransformer"/>-->
@@ -12,4 +12,4 @@
     </test>
 </suite>
 
-<!--        mvn clean -DsuiteXmlFile=testng11.xml test-->
+<!--        mvn clean -DsuiteXmlFile=testng11_1.xml test-->

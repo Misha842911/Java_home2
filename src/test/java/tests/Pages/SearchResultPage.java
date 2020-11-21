@@ -1,5 +1,6 @@
 package test.java.tests.Pages;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -32,6 +33,7 @@ public class SearchResultPage extends BasePage {
         PageFactory.initElements(driver,this);
     };
 
+    @Step("Open Search Page")
     public SearchResultPage open(){
         logger.info("Open Search result page");
         driver.get(PropertyLoader.loadProperty("url") + "s?k=laptop&ref=nb_sb_noss");
@@ -39,6 +41,7 @@ public class SearchResultPage extends BasePage {
         return this;
     }
 
+    @Step("Click on Check Box")
     public SearchResultPage clickCheckBox(By checkBox){
         logger.info("Click Laptop CheckBox");
         logger.error("ERROR!!!");
@@ -48,6 +51,7 @@ public class SearchResultPage extends BasePage {
         return this;
     }
 
+    @Step("Click 'See more'")
     public SearchResultPage clickSeeMore(){
         logger.info("Click 'See more' to open all laptop brands");
         logger.warn("WARN!!!");
@@ -58,6 +62,7 @@ public class SearchResultPage extends BasePage {
         return this;
     }
 
+    @Step("Get list of Check Boxes")
     public List<WebElement> getLaptopCheckBoxesBrandList(){
         logger.info("Get list of laptop brand checkboxes");
         logger.error("ERROR!!!");
@@ -65,6 +70,7 @@ public class SearchResultPage extends BasePage {
         return driver.findElements(laptopBrandsCheckBoxes);
     }
 
+    @Step("Get search result item text")
     public List<WebElement> getSearchResultItemText(){
         logger.info("Get list of text for items");
         logger.warn("WARN!!!");

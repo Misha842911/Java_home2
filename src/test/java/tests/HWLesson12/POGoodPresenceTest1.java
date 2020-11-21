@@ -1,4 +1,4 @@
-package test.java.tests.HWLesson9;
+package test.java.tests.HWLesson12;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,12 +8,13 @@ import org.testng.annotations.Test;
 import test.java.tests.Pages.HomePage;
 import test.java.tests.Pages.SearchResultPage;
 import test.java.tests.TestBaseSetUp;
+
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
 
-public class POGoodPresenceTest extends TestBaseSetUp {
+public class POGoodPresenceTest1 extends TestBaseSetUp {
     HomePage homePage;
     SearchResultPage searchResultPage;
 

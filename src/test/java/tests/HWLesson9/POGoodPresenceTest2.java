@@ -27,7 +27,7 @@ public class POGoodPresenceTest2 extends TestBaseSetUp {
     @DataProvider(name = "dp")
     public Object[][] dataprovider(){
         return new Object[][]{
-                {"iPhone\n", "iphone", AppleCheckBoxBy},
+//                {"iPhone\n", "iphone", AppleCheckBoxBy},
                 {"Samsung\n", "samsung", SamsungCheckBoxBy}
         };
     }
@@ -51,7 +51,6 @@ public class POGoodPresenceTest2 extends TestBaseSetUp {
         for (WebElement good: allGoods) {
             assertTrue ((good.getText().toLowerCase().contains(comparisonItemName)));
         }
-        System.out.println(1/0);
     }
 }
 
