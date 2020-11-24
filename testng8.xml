@@ -6,3 +6,5 @@
         </classes>
     </test>
 </suite>
+
+<!--        mvn clean -DsuiteXmlFile=testng8.xml -Dbrowser=chrome test-->
