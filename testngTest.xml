@@ -6,11 +6,10 @@
     </listeners>
     <test name="FirstTest">
         <classes>
-            <class name="test.java.tests.HWLesson11Additional.LaptopTest1"/>
-<!--            <class name="test.java.tests.HWLesson9.POGoodPresenceTest2"/>-->
+            <class name="test.java.tests.Test1.LaptopTest1"/>
+            <class name="test.java.tests.Test1.LaptopTest2"/>
         </classes>
     </test>
 </suite>
 
-<!--        mvn clean -DsuiteXmlFile=testng11_1.xml test-->
-<!--        mvn clean -DsuiteXmlFile=testng11_1.xml -Dbrowser=chrome -Ddp=smoke test-->
+        <!--        mvn clean -DsuiteXmlFile=testngTest.xml test-->

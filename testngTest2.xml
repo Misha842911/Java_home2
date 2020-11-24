@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="First suit" parallel="classes" thread-count="10">
+    <listeners>
+        <listener class-name="test.java.utils.Listener"/>
+        <listener class-name="test.java.utils.DPAnnotationTransformer"/>
+    </listeners>
+    <test name="FirstTest">
+        <classes>
+            <class name="test.java.tests.HWlesson13.LaptopTest1"/>
+            <class name="test.java.tests.HWlesson13.LaptopTest2"/>
+            <class name="test.java.tests.HWlesson13.LaptopTest3"/>
+        </classes>
+    </test>
+</suite>
+
+<!--        mvn clean -DsuiteXmlFile=testngTest2.xml -Dbrowser=chrome -Ddp=smoke test-->

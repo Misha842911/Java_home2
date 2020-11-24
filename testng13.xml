@@ -2,7 +2,6 @@
 <suite name="First suit" parallel="classes" thread-count="2">
     <listeners>
         <listener class-name="test.java.utils.Listener"/>
-<!--        <listener class-name="test.java.utils.AnnotationTransformer"/>-->
     </listeners>
     <test name="FirefoxTest">
         <parameter name="browser" value="firefox"/>
@@ -20,4 +19,4 @@
     </test>
 </suite>
 
-<!--        mvn clean -DsuiteXmlFile=testng12.xml test-->
+<!--        mvn clean -DsuiteXmlFile=testng13.xml test-->

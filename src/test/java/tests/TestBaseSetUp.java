@@ -1,9 +1,8 @@
 package test.java.tests;
 
 import com.beust.jcommander.Parameter;
-import org.openqa.selenium.By;
-import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -32,8 +31,10 @@ public class TestBaseSetUp {
         ChromeOptions chromeOptions = new ChromeOptions();
         FirefoxOptions ffOptions = new FirefoxOptions();
         try {
-            MutableCapabilities options = System.getProperty("browser").equals("chrome") ? chromeOptions : ffOptions;
-            driver = new RemoteWebDriver(new URL("http://ec2-3-16-51-7.us-east-2.compute.amazonaws.com:4444/wd/hub"), chromeOptions);
+            MutableCapabilities options = System.getProperty("browser").equals("chrome")
+                    ? chromeOptions
+                    : ffOptions;
+            driver = new RemoteWebDriver(new URL("http://ec2-3-15-3-243.us-east-2.compute.amazonaws.com:4444/wd/hub"), options);
 //            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -44,7 +45,19 @@ public class TestBaseSetUp {
 
     @AfterMethod
     public void finalizeBrowser(){
+        attachText();
+        attachScreen();
         driver.quit();
+    }
+
+    @Attachment
+    public String attachText(){
+        return "Text attachment";
+    }
+
+    @Attachment
+    private byte[] attachScreen(){
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
 
