@@ -2,7 +2,7 @@
 <suite name="First suit">
     <test name="FirstTest">
         <classes>
-            <class name="test.java.tests.Task2Test"/>
+            <class name="test.java.tests.Task5Test"/>
         </classes>
     </test>
 </suite>
