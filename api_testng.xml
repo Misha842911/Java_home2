@@ -2,9 +2,9 @@
 <suite name="First suit">
     <test name="FirstTest">
         <classes>
-            <class name="test.java.tests.Task2Test"/>
+            <class name="test.java.tests.API.ProjectAPITests"/>
         </classes>
     </test>
 </suite>
 
-<!--        mvn clean -DsuiteXmlFile=unit_testng.xml -Dbrowser=chrome test-->
+<!--       mvn clean -DsuiteXmlFile=api_testng.xml -Dbrowser=chrome test-->

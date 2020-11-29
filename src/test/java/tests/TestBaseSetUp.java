@@ -34,7 +34,7 @@ public class TestBaseSetUp {
             MutableCapabilities options = System.getProperty("browser").equals("chrome")
                     ? chromeOptions
                     : ffOptions;
-            driver = new RemoteWebDriver(new URL("http://ec2-3-15-3-243.us-east-2.compute.amazonaws.com:4444/wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("ec2-52-15-114-152.us-east-2.compute.amazonaws.com:4444/wd/hub"), options);
 //            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
