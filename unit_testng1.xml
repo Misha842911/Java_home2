@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="First suit">
+    <test name="FirstTest">
+        <classes>
+            <class name="test.java.tests.TestJenkins"/>
+        </classes>
+    </test>
+</suite>
+
+<!--        mvn clean -DsuiteXmlFile=unit_testng1.xml -Dbrowser=chrome test-->
